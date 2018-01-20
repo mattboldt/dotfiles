@@ -19,6 +19,8 @@ filetype plugin indent on    " required
 
 syntax on
 
+let g:airline_theme='one'
+
 :set number
 :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 set wildmenu
