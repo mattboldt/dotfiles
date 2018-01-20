@@ -6,6 +6,7 @@
     ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.gitconfig: gitconfig
+    ~/.tmux.conf: tmux.conf
     ~/bin:
         path: bin/
         create: true

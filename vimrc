@@ -12,6 +12,8 @@ Plugin 'git@github.com:rakr/vim-one.git'
 
 Plugin 'wincent/command-t'
 
+Plugin 'christoomey/vim-tmux-navigator'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
