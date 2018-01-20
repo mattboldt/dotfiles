@@ -62,6 +62,7 @@ ZSH_THEME=""
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   git
+  zsh_reload
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -94,7 +95,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-
 
 export PATH="$PATH:$HOME/.rvm/bin"
 export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
@@ -137,5 +137,14 @@ SPACESHIP_PROMPT_ADD_NEWLINE=true
 SPACESHIP_PACKAGE_SHOW=false
 SPACESHIP_NODE_SHOW=false
 SPACESHIP_RUBY_SHOW=false
+
+if [ $ITERM_SESSION_ID ]; then
+  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
+fi
+
+echo -e "\033]6;1;bg;red;brightness;40\a"
+echo -e "\033]6;1;bg;green;brightness;44\a"
+echo -e "\033]6;1;bg;blue;brightness;52\a"
+
 
 
