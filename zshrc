@@ -107,6 +107,9 @@ export PATH=${PATH}:/usr/local/mysql/bin
 
 export PATH=${PATH}:/usr/local/bin
 
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+
 alias title="printf '\033]0;%s\007'"
 
 alias mysql_start="sudo /usr/local/mysql/support-files/mysql.server start"
