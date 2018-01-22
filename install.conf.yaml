@@ -8,6 +8,7 @@
     ~/.gitconfig: gitconfig
     ~/.tmux.conf: tmux.conf
     ~/.tmux: tmux
+    ~/.ackrc: ackrc
     ~/bin:
         path: bin/
         create: true

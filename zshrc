@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/mattboldt/.oh-my-zsh
+export ZSH=/Users/mboldt/.oh-my-zsh
 
 antibody bundle denysdovhan/spaceship-prompt
 
@@ -128,6 +128,12 @@ alias srpec="rspec"
 
 alias migrate="rake db:migrate RAILS_ENV=development"
 alias migrate_t="rake db:migrate RAILS_ENV=test"
+
+alias ams="rails s -p 3003"
+alias vendor="rails s -p 3005"
+alias storefront="rails s -p 3001"
+alias orcs="rails s -p 4000"
+alias order_service="rails s -p 3009"
 
 alias g="git"
 

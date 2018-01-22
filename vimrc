@@ -14,6 +14,10 @@ Plugin 'wincent/command-t'
 
 Plugin 'christoomey/vim-tmux-navigator'
 
+Plugin 'https://github.com/scrooloose/nerdtree.git'
+
+Plugin 'mileszs/ack.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -33,13 +37,31 @@ if (empty($TMUX))
   endif
 endif
 
-let g:onedark_termcolors=256
+" onedark.vim override: Don't set a background color when running in a terminal;
+" just use the terminal's background color
+" `gui` is the hex color code used in GUI mode/nvim true-color mode
+" `cterm` is the color code used in 256-color mode
+" `cterm16` is the color code used in 16-color mode
+if (has("autocmd") && !has("gui_running"))
+  augroup colorset
+    autocmd!
+    let s:white = { "gui": "#ABB2BF", "cterm": "145", "cterm16" : "7" }
+    autocmd ColorScheme * call onedark#set_highlight("Normal", { "fg": s:white }) " `bg` will not be styled since there is no `bg` setting
+  augroup END
+endif
 
-set t_ut=
+autocmd vimenter * NERDTree
+
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+map <C-t> :NERDTreeToggle<CR>
 
 :set number
 :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 set wildmenu
+
+set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -50,3 +72,4 @@ nnoremap <C-H> <C-W><C-H>
 syntax on
 colorscheme onedark
 
+let g:onedark_termcolors=256
