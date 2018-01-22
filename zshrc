@@ -138,10 +138,10 @@ export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 autoload -U promptinit; promptinit
 prompt spaceship
 
-# SPACESHIP_PROMPT_ADD_NEWLINE=true
-# SPACESHIP_PACKAGE_SHOW=false
-# SPACESHIP_NODE_SHOW=false
-# SPACESHIP_RUBY_SHOW=false
+SPACESHIP_PROMPT_ADD_NEWLINE=true
+SPACESHIP_PACKAGE_SHOW=false
+SPACESHIP_NODE_SHOW=false
+SPACESHIP_RUBY_SHOW=false
 
 if [ $ITERM_SESSION_ID ]; then
   export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
