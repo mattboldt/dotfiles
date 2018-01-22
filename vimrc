@@ -60,6 +60,9 @@ autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in
 
 map <C-t> :NERDTreeToggle<CR>
 
+map ‘ <C-W><C-L>
+map “ <C-W><C-H>
+
 map † :CommandT<CR>
 
 :set number
@@ -68,10 +71,10 @@ set wildmenu
 
 set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
+" nnoremap <C-J> <C-W><C-J>
+" nnoremap <C-K> <C-W><C-K>
+" nnoremap <C-L> <C-W><C-L>
+" nnoremap <C-H> <C-W><C-H>
 
 
 syntax on
