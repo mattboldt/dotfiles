@@ -18,6 +18,8 @@ Plugin 'https://github.com/scrooloose/nerdtree.git'
 
 Plugin 'mileszs/ack.vim'
 
+Plugin 'dbakker/vim-projectroot'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -51,11 +53,14 @@ if (has("autocmd") && !has("gui_running"))
 endif
 
 autocmd vimenter * NERDTree
-
+nnoremap <silent> <leader>dt :ProjectRootExe NERDTreeFind<cr>
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
+
 map <C-t> :NERDTreeToggle<CR>
+
+map † :CommandT<CR>
 
 :set number
 :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
