@@ -11,8 +11,10 @@
 	gone = !git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs git branch -D
 	dl = diff --cached HEAD^
 	fl = log -u
-	la = "!echo ---- && git config -l | grep alias | cut -c 7- && echo ----"
-	
+  la = "!echo ---- && git config -l | grep alias | cut -c 7- && echo ----"
+  shame = !git shortlog -s -n --all
+  list = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(authorname) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) (%(color:green)%(committerdate:relative)%(color:reset))'
+
 [user]
 	name = Matt Boldt
 	email = me@mattboldt.com
@@ -22,3 +24,22 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 
+[push]
+	default = current
+[core]
+	editor = /usr/bin/vim
+	pager = diff-so-fancy | less --tabs=4 -RFX
+[color]
+	ui = true
+[color "diff-highlight"]
+	oldNormal = red bold
+	oldHighlight = red bold 52
+	newNormal = green bold
+	newHighlight = green bold 22
+[color "diff"]
+	meta = yellow
+	frag = magenta bold
+	commit = yellow bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse

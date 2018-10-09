@@ -135,10 +135,12 @@ alias storefront="rails s -p 3001"
 alias orcs="rails s -p 4000"
 alias order_service="rails s -p 3009"
 
-alias g="git"
+alias g="git up"
+alias s="git status"
 
 export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 
+unsetopt share_history
 
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
@@ -157,5 +159,4 @@ echo -e "\033]6;1;bg;red;brightness;40\a"
 echo -e "\033]6;1;bg;green;brightness;44\a"
 echo -e "\033]6;1;bg;blue;brightness;52\a"
 
-
-
+export PATH="$GEM_HOME/bin:$PATH"
