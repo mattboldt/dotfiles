@@ -2,11 +2,8 @@
 
 - link:
     ~/.zshrc: zshrc
-    ~/.vim: vim
     ~/.vimrc: vimrc
     ~/.gitconfig: gitconfig
-    ~/.tmux.conf: tmux.conf
-    ~/.tmux: tmux
     ~/.ackrc: ackrc
     ~/bin:
         path: bin/
