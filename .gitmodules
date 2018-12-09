@@ -6,4 +6,4 @@
 	url = git@github.com:wincent/command-t.git
 [submodule "fonts"]
   path = fonts
-  fetch = git@github.com:powerline/fonts.git
+  url = git@github.com:powerline/fonts.git
