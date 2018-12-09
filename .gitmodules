@@ -1,9 +1,6 @@
 [submodule "dotbot"]
 	path = dotbot
 	url = https://github.com/anishathalye/dotbot
-[submodule "vim/bundle/command-t"]
-	path = vim/bundle/command-t
-	url = git@github.com:wincent/command-t.git
 [submodule "fonts"]
   path = fonts
   url = git@github.com:powerline/fonts.git
