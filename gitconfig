@@ -14,6 +14,7 @@
   la = "!echo ---- && git config -l | grep alias | cut -c 7- && echo ----"
   shame = !git shortlog -s -n --all
   list = for-each-ref --sort=committerdate refs/heads/ --format='%(HEAD) %(authorname) %(color:yellow)%(refname:short)%(color:reset) - %(color:red)%(objectname:short)%(color:reset) - %(contents:subject) (%(color:green)%(committerdate:relative)%(color:reset))'
+  prs = "!hub pr list -f '%sC%>(8)%i%Creset %U %au  %t%  l%n'"
 
 [user]
 	name = Matt Boldt
@@ -27,7 +28,7 @@
 [push]
 	default = current
 [core]
-	editor = /usr/bin/vim
+	editor = subl -n -w
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = true
