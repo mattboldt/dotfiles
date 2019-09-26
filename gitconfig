@@ -19,6 +19,7 @@
 [user]
 	name = Matt Boldt
 	email = me@mattboldt.com
+	signingKey = 79209D6F99D7127E
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -44,3 +45,5 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+[commit]
+	gpgsign = true

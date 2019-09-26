@@ -95,8 +95,7 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$PATH:$HOME/.rvm/bin"
-# export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
@@ -105,6 +104,7 @@ export PATH="$PATH:$HOME/.rvm/bin"
 eval "$(rbenv init -)"
 
 export PATH=${PATH}:/usr/local/mysql/bin
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
 export PATH=${PATH}:/usr/local/bin
 
@@ -119,8 +119,8 @@ fi
 
 alias title="printf '\033]0;%s\007'"
 
-alias mysql_start="sudo /usr/local/mysql/support-files/mysql.server start"
-alias mysql_stop="sudo /usr/local/mysql/support-files/mysql.server stop"
+alias mysql_start="brew services start mysql@5.7"
+alias mysql_stop="brew services stop mysql@5.7"
 
 alias flushdns="sudo killall -HUP mDNSResponder"
 
@@ -131,16 +131,18 @@ alias srpec="rspec"
 alias migrate="rake db:migrate RAILS_ENV=development"
 alias migrate_t="rake db:migrate RAILS_ENV=test"
 
-alias ams="rails s -b 127.0.0.1 -p 3003"
-alias vendor="rails s -b 127.0.0.1 -p 3005"
-alias storefront="rails s -b 127.0.0.1 -p 3001"
-alias orcs="rails s -b 127.0.0.1 -p 4000"
-alias order_service="rails s -b 127.0.0.1 -p 3009"
+alias _rails="rails s -b 127.0.0.1"
+alias ams="_rails -p 3003"
+alias rails_42="BUNDLE_GEMFILE=Gemfile_rails_4_2"
+alias rails_d="BUNDLE_GEMFILE=Gemfile"
+alias vendor="_rails -p 3005"
+alias storefront="_rails -p 3001"
+alias orcs="_rails -p 4000"
+alias order_service="_rails -p 3009"
+alias events="_rails -p 3006"
 
 alias g="git up"
 alias s="git status"
-
-# export PATH="/usr/local/opt/qt@5.5/bin:$PATH"
 
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
@@ -165,3 +167,18 @@ export PATH="$GEM_HOME/bin:$PATH"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+
+export PATH="/usr/local/opt/openssl/bin:$PATH"
+
+# Wasmer
+export WASMER_DIR="$HOME/.wasmer"
+[ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
+
+# libiconv
+export LDFLAGS="-L/usr/local/opt/libiconv/lib"
+export CPPFLAGS="-I/usr/local/opt/libiconv/include"
+
+export PATH="$PATH:$HOME/.cargo/env"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
