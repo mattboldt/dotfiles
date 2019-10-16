@@ -143,6 +143,7 @@ alias events="_rails -p 3006"
 
 alias g="git up"
 alias s="git status"
+alias dc="docker-compose"
 
 # Set Spaceship ZSH as a prompt
 autoload -U promptinit; promptinit
