@@ -19,7 +19,7 @@
 [user]
 	name = Matt Boldt
 	email = me@mattboldt.com
-	signingKey = 79209D6F99D7127E
+	signingkey = 30B0F969CD4F7104
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -49,3 +49,5 @@
 	gpgsign = true
 [url "git@github.com:"]
 	insteadOf = https://github.com/
+[gpg]
+	program = gpg2

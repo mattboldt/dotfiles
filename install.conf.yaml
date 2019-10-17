@@ -2,6 +2,7 @@
 
 - link:
     ~/.zshrc: zshrc
+    ~/.zshenv: zshenv
     ~/.vimrc: vimrc
     ~/.gitconfig: gitconfig
     ~/.ackrc: ackrc
