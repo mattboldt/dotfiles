@@ -7,7 +7,7 @@ export ZSH=$HOME/.oh-my-zsh
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="spaceship"
+ZSH_THEME="TheOne"
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -62,6 +62,7 @@ plugins=(
   github
   title-tab
   zsh_reload
+  yarn
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -95,11 +96,13 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+# export PATH="$(brew --prefix qt@5.5)/bin:$PATH"
+
+if [ -d "$HOME/bin" ] ; then
+  PATH="$PATH:$HOME/bin"
+fi
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
-
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # eval "$(rbenv init -)"
 
@@ -143,16 +146,24 @@ alias events="_rails -p 3006"
 
 alias g="git up"
 alias s="git status"
+alias got="git"
+alias gut="git"
+
 alias dc="docker-compose"
+alias dcl="docker-compose logs -f --tail=1000"
+alias dckill="docker-compose down -v --rmi all"
+alias dps="docker ps"
+alias da="docker attach"
+alias droutes="./script/exec bin/rake routes"
+alias drails="./script/restart_rails"
 
 # Set Spaceship ZSH as a prompt
-autoload -U promptinit; promptinit
-prompt spaceship
-
-SPACESHIP_PROMPT_ADD_NEWLINE=true
-SPACESHIP_PACKAGE_SHOW=false
-SPACESHIP_NODE_SHOW=false
-SPACESHIP_RUBY_SHOW=false
+# autoload -U promptinit; promptinit
+# prompt spaceship
+# SPACESHIP_PROMPT_ADD_NEWLINE=true
+# SPACESHIP_PACKAGE_SHOW=false
+# SPACESHIP_NODE_SHOW=false
+# SPACESHIP_RUBY_SHOW=false
 
 if [ $ITERM_SESSION_ID ]; then
   export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
@@ -164,7 +175,6 @@ echo -e "\033]6;1;bg;red;brightness;40\a"
 echo -e "\033]6;1;bg;green;brightness;44\a"
 echo -e "\033]6;1;bg;blue;brightness;52\a"
 
-export PATH="$GEM_HOME/bin:$PATH"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"

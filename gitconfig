@@ -19,7 +19,7 @@
 [user]
 	name = Matt Boldt
 	email = me@mattboldt.com
-	signingkey = 30B0F969CD4F7104
+	signingkey = 79209D6F99D7127E
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -29,7 +29,7 @@
 [push]
 	default = current
 [core]
-	editor = subl -n -w
+	editor = code -n -w
 	pager = diff-so-fancy | less --tabs=4 -RFX
 [color]
 	ui = true

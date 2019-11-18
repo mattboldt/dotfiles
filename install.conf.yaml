@@ -6,8 +6,7 @@
     ~/.vimrc: vimrc
     ~/.gitconfig: gitconfig
     ~/.ackrc: ackrc
+    ~/.oh-my-zsh: oh-my-zsh
     ~/bin:
-        path: bin/
-        create: true
-
-
+      path: bin/
+      create: true
