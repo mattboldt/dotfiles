@@ -19,7 +19,7 @@
 [user]
 	name = Matt Boldt
 	email = me@mattboldt.com
-	signingkey = 79209D6F99D7127E
+
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
@@ -51,3 +51,6 @@
 	insteadOf = https://github.com/
 [gpg]
 	program = gpg2
+	format = x509
+[gpg "x509"]
+	program = smimesign

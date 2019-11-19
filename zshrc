@@ -60,7 +60,6 @@ DISABLE_AUTO_TITLE="true"
 plugins=(
   git
   github
-  title-tab
   zsh_reload
   yarn
 )
@@ -104,36 +103,51 @@ fi
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
 
-# eval "$(rbenv init -)"
+# --------------------------
+# Prompt
+# --------------------------
+function precmd () {
+  window_title="\033]0;${PWD##*/}\007"
+  echo -ne "$window_title"
+}
+autoload precmd
 
-export PATH=${PATH}:/usr/local/mysql/bin
-export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
+NEWLINE=$'\n'
+# Git prompt plugin
+source ~/.dotfiles/zsh-git-prompt/zshrc.sh
+ZSH_THEME_GIT_PROMPT_SEPARATOR=""
+ZSH_THEME_GIT_PROMPT_PREFIX=""
+ZSH_THEME_GIT_PROMPT_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_STAGED=" %{$fg[red]%}%{●%G%}"
+ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖%G%}"
+ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[blue]%}%{✚%G%}"
+PROMPT='%{$fg_bold[green]%}%p%{$fg_bold[blue]%}%c %{$fg_bold[white]%}| $(git_super_status)% %{$reset_color%}${NEWLINE}%{$fg_bold[magenta]%}λ %{$reset_color%}'
+# fpath=(/usr/local/share/zsh-completions $fpath) idk?
+echo -e "\033]6;1;bg;red;brightness;40\a"
+echo -e "\033]6;1;bg;green;brightness;44\a"
+echo -e "\033]6;1;bg;blue;brightness;52\a"
 
-export PATH=${PATH}:/usr/local/bin
-
-export PATH="$HOME/.cargo/bin:$PATH"
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-if [[ $TERM == xterm ]]; then
-    TERM=xterm-256color
-fi
-
+# --------------------------
+# Aliases
+# --------------------------
 alias title="printf '\033]0;%s\007'"
+alias flushdns="sudo killall -HUP mDNSResponder"
+alias zshinstall="./install && zsh"
 
+# --------------------------
+# Alias: MySQL
+# --------------------------
 alias mysql_start="brew services start mysql@5.7"
 alias mysql_stop="brew services stop mysql@5.7"
 
-alias flushdns="sudo killall -HUP mDNSResponder"
-
+# --------------------------
+# Alias: Rails
+# --------------------------
 alias rpsec="rspec"
 alias rsepc="rspec"
 alias srpec="rspec"
-
 alias migrate="rake db:migrate RAILS_ENV=development"
 alias migrate_t="rake db:migrate RAILS_ENV=test"
-
 alias _rails="rails s -b 127.0.0.1"
 alias ams="_rails -p 3003"
 alias rails_42="BUNDLE_GEMFILE=Gemfile_rails_4_2"
@@ -144,11 +158,17 @@ alias orcs="_rails -p 4000"
 alias order_service="_rails -p 3009"
 alias events="_rails -p 3006"
 
+# --------------------------
+# Alias: Git
+# --------------------------
 alias g="git up"
 alias s="git status"
 alias got="git"
 alias gut="git"
 
+# --------------------------
+# Alias: Docker
+# --------------------------
 alias dc="docker-compose"
 alias dcl="docker-compose logs -f --tail=1000"
 alias dckill="docker-compose down -v --rmi all"
@@ -157,39 +177,58 @@ alias da="docker attach"
 alias droutes="./script/exec bin/rake routes"
 alias drails="./script/restart_rails"
 
-# Set Spaceship ZSH as a prompt
-# autoload -U promptinit; promptinit
-# prompt spaceship
-# SPACESHIP_PROMPT_ADD_NEWLINE=true
-# SPACESHIP_PACKAGE_SHOW=false
-# SPACESHIP_NODE_SHOW=false
-# SPACESHIP_RUBY_SHOW=false
+# --------------------------
+# MySQL
+# --------------------------
+export PATH=${PATH}:/usr/local/mysql/bin
+export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"
 
-if [ $ITERM_SESSION_ID ]; then
-  export PROMPT_COMMAND='echo -ne "\033];${PWD##*/}\007"; ':"$PROMPT_COMMAND";
-fi
+export PATH=${PATH}:/usr/local/bin
 
-# fpath=(/usr/local/share/zsh-completions $fpath)
+# --------------------------
+# Cargo
+# --------------------------
+export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$PATH:$HOME/.cargo/env"
 
-echo -e "\033]6;1;bg;red;brightness;40\a"
-echo -e "\033]6;1;bg;green;brightness;44\a"
-echo -e "\033]6;1;bg;blue;brightness;52\a"
-
+# --------------------------
+# NVM
+# --------------------------
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+# --------------------------
+# Term
+# --------------------------
+if [[ $TERM == xterm ]]; then
+  TERM=xterm-256color
+fi
+
+# --------------------------
+# Yarn
+# --------------------------
 export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
 
+# --------------------------
+# Openssl
+# --------------------------
 export PATH="/usr/local/opt/openssl/bin:$PATH"
 
+# --------------------------
 # Wasmer
+# --------------------------
 export WASMER_DIR="$HOME/.wasmer"
 [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"  # This loads wasmer
 
+# --------------------------
 # libiconv
+# --------------------------
 export LDFLAGS="-L/usr/local/opt/libiconv/lib"
 export CPPFLAGS="-I/usr/local/opt/libiconv/include"
 
-export PATH="$PATH:$HOME/.cargo/env"
-
+# --------------------------
+# RVM
+# --------------------------
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"

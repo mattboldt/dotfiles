@@ -3,25 +3,25 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+" call vundle#begin()
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" " let Vundle manage Vundle, required
+" Plugin 'VundleVim/Vundle.vim'
 
-Plugin 'git@github.com:joshdick/onedark.vim.git'
+" Plugin 'git@github.com:joshdick/onedark.vim.git'
 
-Plugin 'wincent/command-t'
+" Plugin 'wincent/command-t'
 
-Plugin 'christoomey/vim-tmux-navigator'
+" Plugin 'christoomey/vim-tmux-navigator'
 
-Plugin 'https://github.com/scrooloose/nerdtree.git'
+" Plugin 'https://github.com/scrooloose/nerdtree.git'
 
-Plugin 'mileszs/ack.vim'
+" Plugin 'mileszs/ack.vim'
 
-Plugin 'dbakker/vim-projectroot'
+" Plugin 'dbakker/vim-projectroot'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+" call vundle#end()            " required
+" filetype plugin indent on    " required
 
 "Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
 "If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
@@ -58,12 +58,12 @@ endif
 " autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
 
 
-map <C-t> :NERDTreeToggle<CR>
+" map <C-t> :NERDTreeToggle<CR>
 
-map ‘ <C-W><C-L>
-map “ <C-W><C-H>
+" map ‘ <C-W><C-L>
+" map “ <C-W><C-H>
 
-map † :CommandT<CR>
+" map † :CommandT<CR>
 
 :set number
 :highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
@@ -78,6 +78,6 @@ set tabstop=4 softtabstop=0 expandtab shiftwidth=2 smarttab
 
 
 syntax on
-colorscheme onedark
+" colorscheme onedark
 
-let g:onedark_termcolors=256
+" let g:onedark_termcolors=256
