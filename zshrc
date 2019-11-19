@@ -118,10 +118,15 @@ source ~/.dotfiles/zsh-git-prompt/zshrc.sh
 ZSH_THEME_GIT_PROMPT_SEPARATOR=""
 ZSH_THEME_GIT_PROMPT_PREFIX=""
 ZSH_THEME_GIT_PROMPT_SUFFIX=""
+ZSH_THEME_GIT_PROMPT_BRANCH=" %{$fg_bold[magenta]%}"
 ZSH_THEME_GIT_PROMPT_STAGED=" %{$fg[magenta]%}%{●%G%}"
 ZSH_THEME_GIT_PROMPT_CONFLICTS=" %{$fg[red]%}%{✖%G%}"
 ZSH_THEME_GIT_PROMPT_CHANGED=" %{$fg[green]%}%{✚%G%}"
-PROMPT='%{$fg_bold[green]%}%p%{$fg_bold[blue]%}%c $(git_super_status)% %{$reset_color%}${NEWLINE}%{$fg_bold[magenta]%}λ %{$reset_color%}'
+ZSH_THEME_GIT_PROMPT_BEHIND=" %{↓%G%}"
+ZSH_THEME_GIT_PROMPT_AHEAD=" %{↑%G%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{…%G%}"
+ZSH_THEME_GIT_PROMPT_CLEAN=" %{$fg_bold[green]%}%{✔%G%}"
+PROMPT='%{$fg_bold[green]%}%p%{$fg_bold[blue]%}%c$(git_super_status)% %{$reset_color%}${NEWLINE}%{$fg_bold[magenta]%}λ %{$reset_color%}'
 # fpath=(/usr/local/share/zsh-completions $fpath) idk?
 echo -e "\033]6;1;bg;red;brightness;40\a"
 echo -e "\033]6;1;bg;green;brightness;44\a"
